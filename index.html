@@ -1,7 +1,7 @@
 <title>ガス(gas)送金手数料シミュレーション</title>
 <meta name="viewport" content="width=device-width"> 
-<link rel="stylesheet" href="http://getskeleton.com/dist/css/normalize.css">
-<link rel="stylesheet" href="http://getskeleton.com/dist/css/skeleton.css">
+<link rel="stylesheet" href="//getskeleton.com/dist/css/normalize.css">
+<link rel="stylesheet" href="//getskeleton.com/dist/css/skeleton.css">
 
 <style>
     #eth_yen{color:blue; font-weight:bold;}
@@ -31,10 +31,10 @@ function calc() {
 <br>
 
 <div class="bold">ガス量(GasLimit)</div>
-  <input type="text" id="gas" value="220000" />
+  <input type="text" id="gas" value="220000" onChange="calc();" />
 
 <div class="bold">ガス価格(GasPrice)</div>
-  <input type="text" id="gwei" value="68" /> Gwei
+  <input type="text" id="gwei" value="68" onChange="calc();" /> Gwei
 
 
 <div>
@@ -46,7 +46,7 @@ function calc() {
 
 <div class="bold">結果</div>
 <div>
-     eth  <input type="text" id="eth" value="" />
+     eth  <input type="text" id="eth" value="" onChange="calc();" />
      <div> 1ETH = 420000円の場合 </div>
      <span id="eth_yen"></span> 円
 </div>
