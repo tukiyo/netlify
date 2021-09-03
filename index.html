@@ -7,6 +7,7 @@
     #eth_yen{color:blue; font-weight:bold;}
     div.bold { font-weight:bold; }
     div.description { font-weight:bold; background-color: #ddd; }
+    div#show_calc {padding-top: 3em;}
 </style>
 
 <script>
@@ -22,7 +23,7 @@ function calc() {
 	//
 	eth.value = Number(gas.value) * Number(gwei.value) / (1000 * 1000 * 1000);
 	eth_yen.innerHTML = eth.value * eth_now.value;
-	show_calc.innerHTML = gas.value + " * " +  gwei.value + " / " + "(1000 * 1000 * 1000)";
+	show_calc.innerHTML = gas.value + " * " +  gwei.value + " / " + "(1000 * 1000 * 1000) = " + eth_yen.innerHTML;
 }
 
 (window.onload = function() { calc(); })();
@@ -55,5 +56,5 @@ function calc() {
      eth  <input type="text" id="eth" value="" onChange="calc();" />
      <div> 1ETH = 420000円の場合 </div>
      <div><span id="eth_yen"></span> 円</div>
-     <div>計算: <span id="show_calc"></span></div>
+     <div id="show_calc">計算: <span id="show_calc"></span></div>
 </div>
