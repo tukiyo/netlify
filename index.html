@@ -16,9 +16,10 @@ function calc() {
 	var gas = document.getElementById("gas");
 	var gwei = document.getElementById("gwei");
 	var eth = document.getElementById("eth");
+	var eth_now = document.getElementById("eth_now");
 	var eth_yen = document.getElementById("eth_yen");
 	eth.value = Number(gas.value) * Number(gwei.value) / (1000 * 1000 * 1000);
-	eth_yen.innerHTML = eth.value * 420000;
+	eth_yen.innerHTML = eth.value * eth_now.value;
 }
 
 (window.onload = function() { calc(); })();
@@ -36,6 +37,8 @@ function calc() {
 <div class="bold">ガス価格(GasPrice)</div>
   <input type="text" id="gwei" value="68" onChange="calc();" onKeyDown="calc();" /> Gwei
 
+<div class="bold">1ETHの価格(円)</div>
+  <input type="text" id="eth_now" value="436000" onChange="calc();" onKeyDown="calc();" /> Gwei
 
 <div>
   <input type="button" onClick="calc();" value="計算" />
