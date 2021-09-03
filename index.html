@@ -32,13 +32,13 @@ function calc() {
 <br>
 
 <div class="bold">ガス量(GasLimit)</div>
-  <input type="text" id="gas" value="220000" onChange="calc();" onKeyDown="calc();" />
+  <input type="text" id="gas" value="220000" onChange="calc();" onKeyUp="calc();" />
 
 <div class="bold">ガス価格(GasPrice)</div>
-  <input type="text" id="gwei" value="68" onChange="calc();" onKeyDown="calc();" /> Gwei
+  <input type="text" id="gwei" value="68" onChange="calc();" onKeyUp="calc();" /> Gwei
 
 <div class="bold">1ETHの価格(円)</div>
-  <input type="text" id="eth_now" value="436000" onChange="calc();" onKeyDown="calc();" /> Gwei
+  <input type="text" id="eth_now" value="436000" onChange="calc();" onKeyUp="calc();" /> Gwei
 
 <div>
   <input type="button" onClick="calc();" value="計算" />
