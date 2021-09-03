@@ -17,7 +17,7 @@ function calc() {
 	var gwei = document.getElementById("gwei");
 	var eth = document.getElementById("eth");
 	var eth_yen = document.getElementById("eth_yen");
-	eth.value = gas.value * gwei.value / (1000 * 1000 * 1000);
+	eth.value = gas.value * gwei.value * 0.000000001;
 	eth_yen.innerHTML = eth.value * 420000;
 }
 
