@@ -18,11 +18,13 @@ function calc() {
 	var gwei = document.getElementById("gwei");
 	var eth = document.getElementById("eth");
 	var eth_now = document.getElementById("eth_now");
+	var eth_now2 = document.getElementById("eth_now2");
 	var eth_yen = document.getElementById("eth_yen");
 	var show_calc = document.getElementById("show_calc");
 	//
 	eth.value = Number(gas.value) * Number(gwei.value) / (1000 * 1000 * 1000);
 	eth_yen.innerHTML = eth.value * eth_now.value;
+	eth_now2.innerHTML = eth_now.value;
 	show_calc.innerHTML = gas.value + " * " +  gwei.value + " / " + "(1000 * 1000 * 1000) = " + eth_yen.innerHTML;
 }
 
@@ -54,7 +56,7 @@ function calc() {
 <div class="bold">結果</div>
 <div>
      eth  <input type="text" id="eth" value="" onChange="calc();" />
-     <div> 1ETH = 420000円の場合 </div>
+     <div> 1ETH = <span id="eth_now2"></span>円の場合 </div>
      <div><span id="eth_yen"></span> 円</div>
 </div>
 
