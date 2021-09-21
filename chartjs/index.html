@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Pie Chart</title>
+	<meta charset=utf-8>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+	<script>
+	window.chartColors = {
+	       red: 'rgb(255, 99, 132)',
+	       orange: 'rgb(255, 159, 64)',
+	       yellow: 'rgb(255, 205, 86)',
+	       green: 'rgb(75, 192, 192)',
+	       blue: 'rgb(54, 162, 235)',
+	       purple: 'rgb(153, 102, 255)',
+	       grey: 'rgb(201, 203, 207)'
+	};
+	</script>
+	<style>
+	body, div { text-align:center; margin: 0 auto; }
+	</style>
+</head>
+
+<body>
+	<h1>パートナー選び<br>条件を付けるとしたら(日本版)</h1>
+	<div id="canvas-holder" style="width:40%">
+		<canvas id="chart-area"></canvas>
+	</div>
+	<div id="remining"></div>
+
+	<h3>条件絞り込み</h3>
+	<button id="filter_tokyo">都内在住</button><br>
+	<button id="filter_gender">異性であること</button><br>
+	<!-- <button id="filter_65">65歳以下であること</button><br> -->
+	<button id="filter_30">30歳代であること</button><br>
+
+	<br>
+	
+	<button id="filter_tall">身長は平均以上であること</button><br>
+	<button id="filter_incom">年収が平均以上であること</button><br>
+
+	<script>
+		function writeTotal(num) {
+			var total = num / 10000;
+			document.getElementById('remining').innerHTML = "対象: " + parseInt(total) + "万人";
+		}
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+		var currentPercent = 1;
+		var total = 1.265 * 10000 * 10000; // 1.265億人
+
+		function calcRemining(percent) {
+			writeTotal(total * percent);
+			return [ total * percent, total * (1 - percent) ];
+		}
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						1,
+					],
+					backgroundColor: [
+						window.chartColors.blue,
+						window.chartColors.grey,
+						//window.chartColors.yellow,
+						//window.chartColors.green,
+						//window.chartColors.red,
+						//window.chartColors.orange,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'対象',
+					'対象外',
+					//'Yellow',
+					//'Green',
+					//'Blue'
+				]
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('chart-area').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+		};
+
+		// // filter_65
+		// document.getElementById('filter_65').addEventListener('click', function() {
+		// 	document.getElementById('filter_65').disabled = true;
+		// 	currentPercent = currentPercent * 0.75;
+		// 	config.data.datasets[0].data = calcRemining(currentPercent);
+		// 	window.myPie.update();
+		// });
+
+		// filter_gender
+		document.getElementById('filter_gender').addEventListener('click', function() {
+			document.getElementById('filter_gender').disabled = true;
+			currentPercent = currentPercent * 0.5;
+			config.data.datasets[0].data = calcRemining(currentPercent);
+			window.myPie.update();
+		});
+
+		// filter_tall
+		document.getElementById('filter_tall').addEventListener('click', function() {
+			document.getElementById('filter_tall').disabled = true;
+			currentPercent = currentPercent * 0.5;
+			config.data.datasets[0].data = calcRemining(currentPercent);
+			window.myPie.update();
+		});
+
+		// filter_tokyo
+		document.getElementById('filter_tokyo').addEventListener('click', function() {
+			document.getElementById('filter_tokyo').disabled = true;
+			currentPercent = currentPercent * 0.11;
+			config.data.datasets[0].data = calcRemining(currentPercent);
+			window.myPie.update();
+		});
+
+		// filter_30
+		document.getElementById('filter_30').addEventListener('click', function() {
+			document.getElementById('filter_30').disabled = true;
+			currentPercent = currentPercent * 0.12;
+			config.data.datasets[0].data = calcRemining(currentPercent);
+			window.myPie.update();
+		});
+
+		// filter_incom
+		document.getElementById('filter_incom').addEventListener('click', function() {
+			document.getElementById('filter_incom').disabled = true;
+			currentPercent = currentPercent * 0.5;
+			config.data.datasets[0].data = calcRemining(currentPercent);
+			window.myPie.update();
+		});
+
+		var colorNames = Object.keys(window.chartColors);
+		writeTotal(total);
+	</script>
+
+	<div style="padding-top:4em;">
+	<h3>外部リンク</h3>
+	<a href="https://hugkum.sho.jp/8106">調査から判明！年齢別「子育て費用」シミュレーションで月々の総額を計算しよう | 小学館HugKum</a>
+	<br>
+	<a href="https://mainichi.jp/articles/20201216/k00/00m/040/237000c">東京の子育て世帯　30代は年650万円必要　50代は年960万円　労組団体試算 - 毎日新聞</a>
+	<br>
+	<a href="https://kidsline.me/">キッズライン | ベビーシッターマッチング・病児保育/一時保育</a>
+	<br>
+	<a href="https://www.msn.com/ja-jp/news/national/%e3%80%8c%e6%99%ae%e9%80%9a%e3%81%ae%e7%94%9f%e6%b4%bb%e3%80%8d%e6%9d%b1%e4%ba%ac%e3%81%ae%e5%ad%90%e8%82%b2%e3%81%a6%e4%b8%96%e5%b8%af%e3%81%a7%e3%81%84%e3%81%8f%e3%82%89%ef%bc%9f%e2%87%9230%e4%bb%a3%e3%81%a7%e6%9c%8854%e4%b8%87%e5%bf%85%e8%a6%81%e3%81%a7%e3%81%99%e3%80%82%ef%bc%88%e5%8a%b4%e7%b5%84%e5%9b%a3%e4%bd%93%e8%a9%a6%e7%ae%97%ef%bc%89/ar-BB1bZMdL?ocid=msedgdhp">「普通の生活」東京の子育て世帯でいくら？⇒30代で月54万必要です。（労組団体試算）</a>
+	</div>
+</body>
