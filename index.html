@@ -10,6 +10,7 @@
       #eth_yen{color:blue; font-weight:bold; font-size:large;}
       div.bold { font-weight:bold; }
       div.show_calc {padding-top: 1em;}
+      input[type=text] {font-size:large;}
     </style>
 
     <script>
@@ -42,7 +43,7 @@
   <section class="section">
     <div class="container">
 
-        <div>ガス代計算</div>
+        <div style="text-align:center; font-weight:bold;">ガス代計算</div>
 
 	<div class="bold">ガス量(GasLimit)</div>
 	  <input type="text" id="gas" value="300000" onChange="calc();" onKeyUp="calc();" />
