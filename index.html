@@ -10,7 +10,7 @@
       #eth_yen{color:blue; font-weight:bold; font-size:large;}
       div.bold { font-weight:bold; }
       div.show_calc {padding-top: 1em;}
-      input[type=text] {font-size:large;}
+      input[type=tel] {font-size:large;}
       body {background-image:url("bg_sakura.png");}
     </style>
 
@@ -47,13 +47,13 @@
         <div style="text-align:center; font-weight:bold;">ガス代計算</div>
 
 	<div class="bold">ガス量(GasLimit)</div>
-	  <input type="text" id="gas" value="300000" onChange="calc();" onKeyUp="calc();" />
+	  <input type="tel" id="gas" value="300000" onChange="calc();" onKeyUp="calc();" />
 
 	<div class="bold">GasPrice (Gwei)</div>
-	  <input type="text" id="gwei" value="68" onChange="calc();" onKeyUp="calc();" /> 
+	  <input type="tel" id="gwei" value="68" onChange="calc();" onKeyUp="calc();" /> 
 
 	<div class="bold">1ETHの価格(円)</div>
-	  <input type="text" id="eth_now" value="500000" onChange="calc();" onKeyUp="calc();" /> 
+	  <input type="tel" id="eth_now" value="500000" onChange="calc();" onKeyUp="calc();" /> 
 
 	<div style="text-align:center;">
 	  <input type="button" onClick="calc();" value="計算" class="button is-success" />
@@ -61,7 +61,7 @@
 
 	<div class="bold">結果</div>
 	<div>
-	     ETH  <input type="text" id="eth" value="" onChange="calc();" />
+	     ETH  <input type="tel" id="eth" value="" onChange="calc();" />
 	     <div> 1ETH = <span id="eth_now2"></span>円の場合 </div>
 	     <div><span id="eth_yen"></span> 円</div>
 	</div>
