@@ -20,19 +20,21 @@
 	function xeus_reward() {
 		var amount = 1;
 		var bonus_total = 1;
-		var max_days = 300;
+		var max_days = 365;
 		var total_rewards_par_day = 5;
 		var html = "";
 		var reward = 1 + (document.getElementById("rewardValue").value / 100);
+		// 経過日数
+		var pastDate;
 		html += "<table class='table table-dark table-sm table-striped table-hover'>";
 		html += "<tr>";
-		html += "<td>#</td>";
-		html += "<td colspan=5>rewards</td>";
+		html += "<td colspan=6>rewards</td>";
 		html += "</tr>";
 		for (var i=0; i<max_days;i++) {
 			html += "<tr>";
-			html += "<td>";
-			html += (i+1);
+			html += "<td style='font-size:small; color:#ddd;'>";
+			html += showYM(i+1);
+			html += " (" + (i+1) + ")";
 			html += "</td>";
 			for (var j=1; j<=total_rewards_par_day;j++) {
 				html += "<td>";
@@ -46,6 +48,14 @@
 		html += "</table>";
 		document.getElementById("reward").innerHTML = html;
 	}
+
+	function showYM(add) {
+		var dt = new Date(2021, 11-1, 10+add, 0, 0, 0);
+		var m = dt.getMonth()+1;
+		var d = dt.getDate();
+		return m+"/"+d;
+	}
+
 </script>
 
 <body>
