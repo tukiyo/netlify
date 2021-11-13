@@ -17,6 +17,9 @@
 	input#rewardValue {
 		width: 6em;
 	}
+	input#resource {
+		width: 3em;
+	}
 </style>
 
 <script>
@@ -26,6 +29,7 @@
 		var max_days = 365;
 		var total_rewards_par_day = 3;
 		var html = "";
+		var resource = Number(document.getElementById("resource").value);
 		var reward = 1 + (document.getElementById("rewardValue").value / 100);
 		// 経過日数
 		var pastDate;
@@ -41,10 +45,14 @@
 			html += "</td>";
 			for (var j=1; j<=total_rewards_par_day;j++) {
 				html += "<td>";
-				bonus_total = reward ** (i*total_rewards_par_day + j);
+				bonus_total = reward ** (i*total_rewards_par_day + j) * resource;
 				var tmpTotal = Math.floor(bonus_total);
-				if (tmpTotal > 10000) {
-					tmpTotal = (tmpTotal / 10000) + "億";
+				if (tmpTotal > 100000000) {
+					tmpTotal = Math.floor(bonus_total / 100000000) + " 兆";
+				} else if (tmpTotal > 10000) {
+					tmpTotal = Math.floor(bonus_total / 10000) + " 億";
+				} else {
+					tmpTotal+= " 万";
 				}
 				html += tmpTotal;
 				html += " ";
@@ -72,6 +80,7 @@
 </div>
 
 <div id="rewardArea">
+	<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />万円
 	<input type="number" value="2.1080" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
 </div>
 
