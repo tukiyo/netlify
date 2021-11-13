@@ -106,8 +106,8 @@
 <div id="rewardArea">
 	<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
 	万円
-	<button onClick="changeResourceAmount(-10);">－</button>
-	<button onClick="changeResourceAmount(+10);">＋</button>
+	<button onClick="changeResourceAmount(-10); return false;">－</button>
+	<button onClick="changeResourceAmount(+10); return false;">＋</button>
 	<input type="number" value="2.0964" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
 </div>
 
