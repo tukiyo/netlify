@@ -7,6 +7,7 @@
 <style>
 	body {
 		text-align:center;
+		background-color: #ddd;
 	}
 	div#reward {
 		width:100%;
@@ -26,6 +27,7 @@
 	}
 	table.table {
 		max-width: 320px;
+		margin: 0 auto;
 	}
 </style>
 
@@ -105,24 +107,28 @@
 
 <body>
 
-<div style="text-align:center; margin-top: 2em;">
-	<h1>$OHM reward sheet</h1>
+<div class="container">
+	<div class="row">
+		
+	<div style="text-align:center; margin-top: 2em;">
+		<h1>$OHM reward sheet</h1>
+	</div>
+
+	<div id="rewardArea">
+		<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
+		万円
+		<button onClick="changeResourceAmount(-10); return false;">－</button>
+		<button onClick="changeResourceAmount(+10); return false;">＋</button>
+		<input type="number" value="2.0964" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
+	</div>
+
+	<div id="reward"></div>
+
+	</div>
 </div>
-
-<div id="rewardArea">
-	<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
-	万円
-	<button onClick="changeResourceAmount(-10); return false;">－</button>
-	<button onClick="changeResourceAmount(+10); return false;">＋</button>
-	<input type="number" value="2.0964" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
-</div>
-
-
-<div id="reward"></div>
 
 </body>
 
 <script>
 ohm_reward();
 </script>
-
