@@ -70,7 +70,14 @@
 		dt.setDate(dt.getDate() + add - 1);
 		var m = dt.getMonth()+1;
 		var d = dt.getDate();
-		return m+"/"+d;
+		var w = dt.getDay();
+		var result = m+"/"+d;
+		if (w == 0) {
+			result = "<font color=#FF0066>" + result + "</font>";
+		} else if (w == 1) {
+			result = "<font color=#66CCFF>" + result + "</font>";
+		}
+		return result;
 	}
 
 </script>
@@ -83,7 +90,7 @@
 
 <div id="rewardArea">
 	<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />万円
-	<input type="number" value="2.1080" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
+	<input type="number" value="2.0964" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
 </div>
 
 
