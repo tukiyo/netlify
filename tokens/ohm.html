@@ -82,7 +82,15 @@
 
 	function changeResourceAmount(val) {
 		var resource = document.getElementById("resource").value;
-		resource = (Number(resource) + 10) / 10;
+		if (resource <= -val) {
+			document.getElementById("resource").value = 1;
+			return false;
+		}
+		if (resource < 10) {
+			resource = 0;
+		}
+		var tmp = parseInt(resource) + val;
+		document.getElementById("resource").value = Math.floor(tmp * 10) / 10;
 		ohm_reward();
 	}
 
@@ -96,7 +104,9 @@
 
 <div id="rewardArea">
 	<input type="number" value="1" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
-	<span onClick="changeResourceAmount(10);">万円</span>
+	万円
+	<button onClick="changeResourceAmount(-10);">－</button>
+	<button onClick="changeResourceAmount(+10);">＋</button>
 	<input type="number" value="2.0964" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
 </div>
 
