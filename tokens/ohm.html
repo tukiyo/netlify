@@ -1,0 +1,80 @@
+<title>$OHM reward sheet</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<style>
+	div#reward {
+		width:100%;
+		text-align:right;
+	}
+	div#rewardArea {
+		position:fixed;
+		top: 0;
+		left: 0;
+	}
+	input#rewardValue {
+		width: 6em;
+	}
+</style>
+
+<script>
+	function ohm_reward() {
+		var amount = 1;
+		var bonus_total = 1;
+		var max_days = 365;
+		var total_rewards_par_day = 3;
+		var html = "";
+		var reward = 1 + (document.getElementById("rewardValue").value / 100);
+		// 経過日数
+		var pastDate;
+		html += "<table class='table table-dark table-sm table-striped table-hover'>";
+		html += "<tr>";
+		html += "<td colspan=6>rewards</td>";
+		html += "</tr>";
+		for (var i=0; i<max_days;i++) {
+			html += "<tr>";
+			html += "<td style='font-size:small; color:#ddd;'>";
+			html += showYM(i+1);
+			html += " (" + (i+1) + ")";
+			html += "</td>";
+			for (var j=1; j<=total_rewards_par_day;j++) {
+				html += "<td>";
+				bonus_total = reward ** (i*total_rewards_par_day + j);
+				html += Math.floor(bonus_total);
+				html += " ";
+				html += "</td>";
+			}
+			html += "</tr>";
+		}
+		html += "</table>";
+		document.getElementById("reward").innerHTML = html;
+	}
+
+	function showYM(add) {
+		var dt = new Date(2021, 11-1, 10+add, 0, 0, 0);
+		var m = dt.getMonth()+1;
+		var d = dt.getDate();
+		return m+"/"+d;
+	}
+
+</script>
+
+<body>
+
+<div style="text-align:center; margin-top: 2em;">
+	<h1>$OHM reward sheet</h1>
+</div>
+
+<div id="rewardArea">
+	<input type="number" value="2.1080" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
+</div>
+
+
+<div id="reward"></div>
+</body>
+
+<script>
+ohm_reward();
+</script>
