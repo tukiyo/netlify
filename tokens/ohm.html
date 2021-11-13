@@ -42,7 +42,11 @@
 			for (var j=1; j<=total_rewards_par_day;j++) {
 				html += "<td>";
 				bonus_total = reward ** (i*total_rewards_par_day + j);
-				html += Math.floor(bonus_total);
+				var tmpTotal = Math.floor(bonus_total);
+				if (tmpTotal > 10000) {
+					tmpTotal = (tmpTotal / 10000) + "億";
+				}
+				html += tmpTotal;
 				html += " ";
 				html += "</td>";
 			}
