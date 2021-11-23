@@ -63,6 +63,9 @@
 					total_rewards_par_day = j;
 				} else if (tmpTotal >= 10000) {
 					tmpTotal = Math.floor(bonus_total / 10000) + " 億";
+					// 巨大すぎるので処理を終了
+					max_days = i;
+					total_rewards_par_day = j;
 				} else {
 					tmpTotal+= " 万";
 				}
