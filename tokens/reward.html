@@ -81,11 +81,6 @@
 		dt.setDate(dt.getDate() + 365*add - 1);
 		var y = dt.getYear();
 		var result = y + "年";
-		if (w == 0) {
-			result = "<font color=#FF0066>" + result + "</font>";
-		} else if (w == 6) {
-			result = "<font color=#66CCFF>" + result + "</font>";
-		}
 		return result;
 	}
 
