@@ -76,10 +76,9 @@
 	}
 
 	function showYM(add) {
-		//var dt = new Date(2021, 11-1, 13+add, 0, 0, 0);
 		var dt = new Date();
 		dt.setDate(dt.getDate() + 365*add - 1);
-		var y = dt.getYear();
+		var y = dt.getFullYear();
 		var result = y + "年";
 		return result;
 	}
