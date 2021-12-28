@@ -55,15 +55,13 @@
 				bonus_total = reward ** (i*total_rewards_par_day + j) * resource;
 				var tmpTotal = Math.floor(bonus_total);
 				if (tmpTotal >= 100000000) {
-					tmpTotal = Math.floor(bonus_total / 100000000) + " 兆";
-					// 巨大すぎるので処理を終了
-					max_days = i;
-				} else if (tmpTotal >= 10000) {
-					if (tmpTotal >= 30000) {
+					tmpTotal = Math.floor(bonus_total / 100000000) + " 億";
+					if (tmpTotal >= 300000000) {
 						// 巨大すぎるので処理を終了
 						max_days = i;
 					}
-					tmpTotal = Math.floor(bonus_total / 10000) + " 億";
+				} else if (tmpTotal >= 10000) {
+					tmpTotal = Math.floor(bonus_total / 10000) + " 万";
 				} else {
 					tmpTotal+= " 万";
 				}
@@ -115,11 +113,13 @@
 	<div class="row">
 	
 	<div id="rewardArea">
-		<input type="number" value="3.9" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
-		万円
+		<input type="number" value="100" id="resource" onKeyUp="ohm_reward();" onChange="ohm_reward();" />
+		円
+		<!--
 		<button onClick="changeResourceAmount(-10); return false;">－</button>
 		<button onClick="changeResourceAmount(+10); return false;">＋</button>
-		<input type="number" value="4.4414" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
+		-->
+		<input type="number" value="1" id="rewardValue" onKeyUp="ohm_reward();" onChange="ohm_reward();" />%
 	</div>
 
 	<div id="reward"></div>
