@@ -33,23 +33,23 @@
 	show_calc.innerHTML = gas.value + " * " +  gwei.value + " / " + "(1000 * 1000 * 1000) = " + eth_calc;
     }
     
-async function getEthPrice() {
+function getEthPrice() {
   var url_cg = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=jpy,usd";
-  //let myFetch = fetch(url_cg);
-  let myFetch = await get(url_cg);
+  let myFetch = fetch(url_cg);
   myFetch.then(function(response) {
     response.text().then(function(text) {
       let json = JSON.parse(text);
       // console.log(json.ethereum.jpy);
       document.getElementById("eth_now").value = json.ethereum.jpy;
       document.getElementById("eth_now2").innerHTML = json.ethereum.jpy;
+      //
+      calc();
     });
   });
 }
 
     window.addEventListener("load",function() {
 	    getEthPrice();
-	    calc();
     });
 
     </script>
