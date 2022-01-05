@@ -40,6 +40,7 @@ function getEthPrice() {
   myFetch.then(function(response) {
     response.text().then(function(text) {
       let json = JSON.parse(text);
+	    console.log(json.ethereum.jpy);
       document.getElementById("eth_now").value = json.ethereum.jpy;
     });
   });
