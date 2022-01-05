@@ -41,6 +41,7 @@ function getEthPrice() {
       let json = JSON.parse(text);
       // console.log(json.ethereum.jpy);
       document.getElementById("eth_now").value = json.ethereum.jpy;
+      document.getElementById("eth_now2").value = json.ethereum.jpy;
     });
   });
 }
