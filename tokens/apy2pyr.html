@@ -1,0 +1,101 @@
+<title>reward sheet</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<style>
+	body {
+		text-align:center;
+		background-color: black;
+	}
+	div#reward {
+		width:100%;
+		text-align:right;
+	}
+	div#rewardArea {
+		position:fixed;
+		top: 0;
+		left: 0;
+		background-color: #ddd;
+	}
+	input#rewardValue {
+		width: 15em;
+	}
+	input#resource {
+		width: 5em;
+	}
+	table.table {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+</style>
+
+<script>
+	function reward() {
+		var amount = 1;
+		var bonus_total = 1;
+		var max_years = 365;
+		var total_rewards_par_year = 1;
+		var html = "";
+		var resource = Number(document.getElementById("resource").value);
+		//var reward = 1 + (document.getElementById("rewardValue").value / 100);
+		html += "<table class='table table-dark table-sm table-striped table-hover'>";
+		html += "<tr><td colspan=4>rewards</td></tr>";
+		for (var i=0; i<max_years;i++) {
+			html += "<tr>";
+			html += "<td style='font-size:small; color:#ddd;'>";
+			html += showYM(i+1);
+			html += " (" + (i+1) + ")";
+			html += "</td>";
+			for (var j=1; j<=total_rewards_par_year;j++) {
+				var apr = Math.floor(365, resource);
+        html += "<td>" + apr + "</td>";
+			}
+			html += "</tr>";
+		}
+		html += "</table>";
+		//document.getElementById("reward").innerHTML = html;
+	}
+
+	function showYM(add) {
+		var result = add + "日目";
+		return result;
+	}
+
+	function changeResourceAmount(val) {
+		var resource = document.getElementById("resource").value;
+		if (resource <= -val) {
+			document.getElementById("resource").value = 1;
+			return false;
+		}
+		if (resource < 10) {
+			resource = 0;
+		}
+		var tmp = parseInt(resource) + val;
+		document.getElementById("resource").value = Math.floor(tmp * 10) / 10;
+		reward();
+	}
+
+</script>
+
+<body>
+
+<div class="container">
+	<div class="row">
+	
+	<div id="rewardArea">
+		<input type="number" value="100" id="resource" onKeyUp="reward();" onChange="reward();" />
+		%
+	</div>
+
+	<div id="reward"></div>
+
+	</div>
+</div>
+
+</body>
+
+<script>
+reward();
+</script>
