@@ -1,0 +1,98 @@
+
+<title>reward sheet</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<style>
+	body {
+		text-align:center;
+		background-color: black;
+	}
+	div#reward {
+		width:100%;
+		text-align:right;
+	}
+	div#rewardArea {
+		position:fixed;
+		top: 0;
+		left: 0;
+		background-color: #ddd;
+	}
+	input#rewardValue {
+		width: 5.5em;
+	}
+	input#resource {
+		width: 5em;
+	}
+	table.table {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+</style>
+
+<script>
+	function reward() {
+		var amount = 1;
+		var bonus_total = 1;
+		var max_years = 365;
+		var total_rewards_par_year = 1;
+		var html = "";
+		var resource = Number(document.getElementById("resource").value);
+		var reward = document.getElementById("rewardValue").value;
+		if (reward  != 0) {
+			reward = (document.getElementById("rewardValue").value / 100);
+		}
+		html += "<table class='table table-dark table-sm table-striped table-hover'>";
+		html += "<tr><td colspan=4>rewards</td></tr>";
+		for (var i=0; i<max_years;i++) {
+			html += "<tr>";
+			html += "<td style='font-size:small; color:#ddd;'>";
+			//html += showYM(i+1);
+			html += (i+1) + "日目";
+			html += "</td>";
+			for (var j=1; j<=total_rewards_par_year;j++) {
+				html += "<td>";
+				bonus_total = i * resource * reward;
+				tmpTotal = bonus_total;
+				html += Math.floor(tmpTotal * 100);
+				html += " %";
+				html += "</td>";
+			}
+			html += "</tr>";
+		}
+		html += "</table>";
+		document.getElementById("reward").innerHTML = html;
+	}
+
+	function showYM(add) {
+		var dt = new Date();
+		dt.setDate(dt.getDate() + 365*add - 1);
+		var y = dt.getFullYear();
+		var result = y + " 年";
+		return result;
+	}
+</script>
+
+<body>
+
+<div class="container">
+	<div class="row">
+	
+	<div id="rewardArea">
+		<input type="number" value="1" id="resource" onKeyUp="reward();" onChange="reward();" style="display:none;"/>
+
+		<input type="number" value="1" id="rewardValue" onKeyUp="reward();" onChange="reward();" />%
+	</div>
+
+	<div id="reward"></div>
+
+	</div>
+</div>
+
+</body>
+
+<script>
+reward();
+</script>
