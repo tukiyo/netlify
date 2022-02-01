@@ -48,6 +48,13 @@ function getEthPrice() {
     });
   });
 }
+      
+      
+function eth2yen() {
+    var eth_now2 = document.getElementById("eth_now2").innerHTML;
+    var eth_amount = document.getElementById("eth_amount").value;
+    document.getElementById("yen_amount").innerHTML = eth_now2 * eth_amount;
+}
 
     window.addEventListener("load",function() {
 	    getEthPrice();
@@ -93,6 +100,15 @@ function getEthPrice() {
 	    <span style="background-color:#ddd;">ガス量（Gas） × ガス価格（Gwei) / (1000 * 1000 * 1000)</span>
 	     <div id="show_calc"></div>
 	</div>
+    
+    <hr>
+    
+      <h2>ETH → 円換算</h2>
+      <div>
+	<input type="number" id="eth_amount" values="" onKeyDown="eth2yen();" /> ETH
+       → <br>
+      <span id="yen_amount"></span>円
+      </div>
 
     </div>
   </section>
