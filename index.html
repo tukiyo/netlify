@@ -59,7 +59,7 @@ function eth2yen() {
 function yen2eth() {
     var eth_now2 = document.getElementById("eth_now2").innerHTML;
     var yen_amount = document.getElementById("yen_amount2").value;
-    document.getElementById("eth_amount2").innerHTML = eth_now2 * yen_amount;
+    document.getElementById("eth_amount2").innerHTML = yen_amount / eth_now2;
 }
 
     window.addEventListener("load",function() {
