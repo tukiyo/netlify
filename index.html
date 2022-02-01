@@ -113,7 +113,7 @@ function yen2eth() {
 		
 	<div class="bold">ETH → 円換算</div>
       <div>
-	<input type="number" id="eth_amount" values="" onKeyDown="eth2yen();" style="width:7em;"/> ETH
+	<input type="number" id="eth_amount" values="" onKeyUp="eth2yen();" style="width:7em;"/> ETH
        → <span id="yen_amount"></span>円
         <input type="button" value="換算" onKeyDown="eth2yen();" />
       </div>
@@ -121,7 +121,7 @@ function yen2eth() {
 		
 	<div class="bold">円 → ETH換算</div>
       <div>
-	<input type="number" id="yen_amount2" values="" onKeyDown="yen2eth();" style="width:7em;"/> 円
+	<input type="number" id="yen_amount2" values="" onKeyUp="yen2eth();" style="width:7em;"/> 円
        → <span id="eth_amount2"></span>ETH
         <input type="button" value="換算" onKeyDown="yen2eth();" />
       </div>
