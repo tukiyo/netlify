@@ -56,6 +56,12 @@ function eth2yen() {
     document.getElementById("yen_amount").innerHTML = eth_now2 * eth_amount;
 }
 
+function yen2eth() {
+    var eth_now2 = document.getElementById("eth_now2").innerHTML;
+    var yen_amount = document.getElementById("yen_amount2").value;
+    document.getElementById("eth_amount2").innerHTML = eth_now2 * yen_amount;
+}
+
     window.addEventListener("load",function() {
 	    getEthPrice();
     });
@@ -104,11 +110,20 @@ function eth2yen() {
     <hr>
     
 	<div class="container">
+		
 	<div class="bold">ETH → 円換算</div>
       <div>
 	<input type="number" id="eth_amount" values="" onKeyDown="eth2yen();" style="width:7em;"/> ETH
        → <span id="yen_amount"></span>円
         <input type="button" value="換算" onKeyDown="eth2yen();" />
+      </div>
+		
+		
+	<div class="bold">円 → ETH換算</div>
+      <div>
+	<input type="number" id="yen_amount" values="" onKeyDown="yen2eth();" style="width:7em;"/> 円
+       → <span id="yen_amount2"></span>ETH
+        <input type="button" value="換算" onKeyDown="yen2eth();" />
       </div>
 
     </div>
